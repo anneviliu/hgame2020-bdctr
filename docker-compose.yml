@@ -1,0 +1,33 @@
+version: '2'
+services:
+    public:
+        container_name: "hgame-public"
+        build:
+            context: .
+            dockerfile: Dockerfile_public
+        ports:
+            - "12303:80"
+        volumes:
+            - "./public:/var/www/html"
+        networks:
+            default:
+                ipv4_address: 172.20.0.31
+        extra_hosts:
+            - "hgame-private:172.20.0.76"    
+
+    private:
+        container_name: "hgame-private"
+        build: 
+            context: .
+            dockerfile: Dockerfile_private
+        volumes:
+            - "./private:/var/www/html"
+        networks:
+            default:
+                ipv4_address: 172.20.0.76
+
+
+networks:
+    default:
+        external:
+            name: docker-br0

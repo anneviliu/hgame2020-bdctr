@@ -1,0 +1,8 @@
+FROM li4n0/lamp-18.04-php7.2
+RUN apt-get update
+ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY run.sh /home/run.sh
+COPY flag /flag
+WORKDIR /var/www/html
+CMD /bin/bash /home/run.sh
+EXPOSE 80
