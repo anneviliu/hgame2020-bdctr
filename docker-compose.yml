@@ -1,7 +1,7 @@
 version: '2'
 services:
     public:
-        container_name: "hgame-public"
+        container_name: "week4-public"
         build:
             context: .
             dockerfile: Dockerfile_public
@@ -11,12 +11,12 @@ services:
             - "./public:/var/www/html"
         networks:
             default:
-                ipv4_address: 172.20.0.31
+                ipv4_address: 172.21.0.31
         extra_hosts:
-            - "hgame-private:172.20.0.76"    
+            - "hgame-private:172.21.0.76"    
 
     private:
-        container_name: "hgame-private"
+        container_name: "week4-private"
         build: 
             context: .
             dockerfile: Dockerfile_private
@@ -24,8 +24,20 @@ services:
             - "./private:/var/www/html"
         networks:
             default:
-                ipv4_address: 172.20.0.76
+                ipv4_address: 172.21.0.76
+        extra_hosts:
+            - "checker:172.21.0.236"
 
+    check:
+        container_name: "token-checker"
+        build:
+            context: .
+            dockerfile: Dockerfile_checker
+        volumes:
+        - "./checker:/var/www/html"
+        networks:
+            default:
+                ipv4_address: 172.21.0.236
 
 networks:
     default:

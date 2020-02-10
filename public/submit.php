@@ -18,10 +18,13 @@ try{
     $chal_name = $creds->name;
     $level = $creds->level;
     $time = $creds->time;
+    if ($id == "" || $level == "" || $chal_name == ""|| $time == "") {
+        $result = sprintf("<result><code>%d</code><msg>%s</msg></result>",0,"请填写信息！");
+        die($result);
+    }
     $stmt->execute();
     $result = sprintf("<result><code>%d</code><msg>%s</msg></result>",1,"已提交成功，正在为您安排打手");
 }catch(Exception $e){
-//    echo "Error: " . $e->getMessage();
     $result = sprintf("<result><code>%d</code><msg>%s</msg></result>",0,"提交失败！");
 }
 header('Content-Type: text/html; charset=utf-8');

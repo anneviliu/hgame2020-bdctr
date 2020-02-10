@@ -1,8 +1,8 @@
 FROM li4n0/lamp-18.04-php7.2
 RUN apt-get update
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY run_private.sh /home/run.sh
-COPY flag /etc/f1agg
+COPY token.sql /home/token.sql
+COPY run_checker.sh /home/run.sh
 WORKDIR /var/www/html
 CMD /bin/bash /home/run.sh
 EXPOSE 80

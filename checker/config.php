@@ -1,12 +1,11 @@
 <?php
 $dbms='mysql';
 $host='localhost';
-$dbName='bdctr_message';
+$dbName='team_token';
 $user='root';
-$pass='yevi1gcqpqHSaOZVDI1CcRLaHHSJ5BYgImof';
+$pass='5Om1HtOwkW31AYjHn3bOAyJDr5bSQriXRgUoNpK54ELSE';
 
 $dsn="$dbms:host=$host;dbname=$dbName";
 $conn = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+//$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
